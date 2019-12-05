@@ -30,8 +30,8 @@ public class EventServiceImpl implements EventService {
 
     @Override
     @Transactional
-    public void save(Event event) {
-        eventDao.saveOrUpdate(event);
+    public Event save(Event event) {
+        return eventDao.saveOrUpdate(event);
     }
 
     @Override

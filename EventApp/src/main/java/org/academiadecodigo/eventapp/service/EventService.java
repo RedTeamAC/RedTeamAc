@@ -10,7 +10,7 @@ public interface EventService {
 
     List<Event> findAll();
 
-    void save(Event event);
+    Event save(Event event);
 
     void delete(Integer id);
 }

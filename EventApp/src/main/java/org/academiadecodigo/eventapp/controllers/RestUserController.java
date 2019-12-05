@@ -22,8 +22,8 @@ import javax.validation.Valid;
 public class RestUserController {
 
     private UserService userService;
-    private UserDtoToUser DtoToUserConverter;
-    private UserToUserDto UserToDtoConverter;
+    private UserDtoToUser dtoToUserConverter;
+    private UserToUserDto userToDtoConverter;
 
     @Autowired
     public void setUserService(UserService userService) {
@@ -32,12 +32,12 @@ public class RestUserController {
 
     @Autowired
     public void setDtoToUserConverter(UserDtoToUser dtoToUserConverter) {
-        DtoToUserConverter = dtoToUserConverter;
+        this.dtoToUserConverter = dtoToUserConverter;
     }
 
     @Autowired
     public void setUserToDtoConverter(UserToUserDto userToDtoConverter) {
-        UserToDtoConverter = userToDtoConverter;
+        this.userToDtoConverter = userToDtoConverter;
     }
 
     @RequestMapping(method = RequestMethod.POST, path = {"/","","/add"})
@@ -48,7 +48,7 @@ public class RestUserController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        User savedUser = userService.save(DtoToUserConverter.convert(userDto));
+        User savedUser = userService.save(dtoToUserConverter.convert(userDto));
 
         UriComponents uriComponents = uriComponentsBuilder.path("/api/user/" + savedUser.getId()).build();
 
@@ -56,9 +56,23 @@ public class RestUserController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(uriComponents.toUri());
 
-        return new ResponseEntity<>(UserToDtoConverter.convert(savedUser), HttpStatus.CREATED);
+        return new ResponseEntity<>(userToDtoConverter.convert(savedUser), HttpStatus.CREATED);
 
     }
+
+    @RequestMapping(method = RequestMethod.GET , path = {"/{id}"})
+    public ResponseEntity<UserDto> getUser(@PathVariable Integer id){
+
+        User user = userService.get(id);
+
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(userToDtoConverter.convert(user), HttpStatus.OK);
+
+    }
+
 
 
     /*
