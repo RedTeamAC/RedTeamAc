@@ -1,6 +1,12 @@
 package org.academiadecodigo.eventapp.dto;
 
 import org.academiadecodigo.eventapp.model.EventType;
+import org.academiadecodigo.eventapp.model.User;
+
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 public class EventDto {
 
@@ -76,6 +82,8 @@ public class EventDto {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
 
     @Override
     public String toString() {

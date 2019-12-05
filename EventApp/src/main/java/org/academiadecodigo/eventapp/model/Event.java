@@ -3,6 +3,8 @@ package org.academiadecodigo.eventapp.model;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table( name = "event")
@@ -14,13 +16,15 @@ public class Event extends AbstractEntity {
     private String description;
 
     @OneToMany(
-
             cascade = {CascadeType.ALL},
-            orphanRemoval = false,
-            mappedBy = "event",
-            fetch = FetchType.EAGER
 
+            orphanRemoval = false,
+
+            mappedBy = "userEvents",
+
+            fetch = FetchType.EAGER
     )
+    private List<User> userList = new ArrayList<>();
 
     public EventType getType() {
         return type;
@@ -38,7 +42,9 @@ public class Event extends AbstractEntity {
         return description;
     }
 
-
+    public List<User> getUserList() {
+        return userList;
+    }
 
     public void setType(EventType type) {
         this.type = type;

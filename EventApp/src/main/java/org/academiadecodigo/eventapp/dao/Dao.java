@@ -13,4 +13,5 @@ public interface Dao<T extends AbstractEntity> {
     T saveOrUpdate(T modelObject);
 
     void delete(Integer id);
+
 }

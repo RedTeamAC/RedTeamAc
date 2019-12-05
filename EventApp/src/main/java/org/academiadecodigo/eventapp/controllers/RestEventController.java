@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -69,4 +71,14 @@ public class RestEventController {
 
     }
 
-}
+    @RequestMapping(method = RequestMethod.GET, path = {"/", "", "list"})
+        public ResponseEntity<List<EventDto>> listEvents(){
+
+            return  new ResponseEntity<>(eventToEventDtoConverter.convert(eventService.findAll()), HttpStatus.OK);
+
+        }
+
+
+    }
+
+

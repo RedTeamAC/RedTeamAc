@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 @Service
@@ -38,5 +39,20 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void delete(Integer id) {
         userDao.delete(id);
+    }
+
+    @Transactional
+    public User findByEmail(String email){
+
+        User user = null;
+
+        try {
+            user =  userDao.findByEmail(email);
+        } catch (NoResultException ex) {
+            ex.printStackTrace();
+        }
+
+        return user;
+
     }
 }
