@@ -4,7 +4,9 @@ import org.academiadecodigo.eventapp.dto.UserDto;
 import org.academiadecodigo.eventapp.model.User;
 import org.academiadecodigo.eventapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserDtoToUser extends AbstractConverter<UserDto, User> {
 
     @Autowired

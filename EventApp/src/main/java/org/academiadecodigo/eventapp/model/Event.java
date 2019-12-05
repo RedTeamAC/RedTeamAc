@@ -55,4 +55,14 @@ public class Event extends AbstractEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "type=" + type +
+                ", minAttendance=" + minAttendance +
+                ", maxAttendance=" + maxAttendance +
+                ", description='" + description + '\'' +
+                '}'+ super.toString();
+    }
 }

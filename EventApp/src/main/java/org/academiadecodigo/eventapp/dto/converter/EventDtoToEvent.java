@@ -4,7 +4,9 @@ import org.academiadecodigo.eventapp.dto.EventDto;
 import org.academiadecodigo.eventapp.model.Event;
 import org.academiadecodigo.eventapp.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EventDtoToEvent extends AbstractConverter<EventDto, Event>{
 
     private EventService eventService;

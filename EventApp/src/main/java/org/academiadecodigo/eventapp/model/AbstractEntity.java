@@ -10,7 +10,7 @@ import java.util.Date;
 public class AbstractEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String location;
@@ -79,5 +79,18 @@ public class AbstractEntity {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "AbstractEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", contact='" + contact + '\'' +
+                ", version=" + version +
+                ", creationTime=" + creationTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

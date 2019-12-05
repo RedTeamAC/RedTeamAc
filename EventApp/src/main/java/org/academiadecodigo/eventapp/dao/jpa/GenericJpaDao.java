@@ -13,14 +13,13 @@ public abstract class GenericJpaDao<T extends AbstractEntity> implements Dao<T> 
 
     protected Class<T> modelType;
 
-    @PersistenceContext
     protected EntityManager em;
 
     public GenericJpaDao(Class<T> modelType) {
         this.modelType = modelType;
     }
 
-
+    @PersistenceContext
     public void setEm(EntityManager em) {
         this.em = em;
     }

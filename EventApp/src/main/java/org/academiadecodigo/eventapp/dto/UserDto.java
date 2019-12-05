@@ -1,11 +1,18 @@
 package org.academiadecodigo.eventapp.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class UserDto {
 
     private Integer id;
+
+    @NotNull
     private String name;
+    @NotNull
     private String location;
+    @NotNull
     private String contact;
+    @NotNull
     private String email;
 
     public Integer getId() {

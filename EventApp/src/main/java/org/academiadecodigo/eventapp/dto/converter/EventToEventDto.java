@@ -2,7 +2,9 @@ package org.academiadecodigo.eventapp.dto.converter;
 
 import org.academiadecodigo.eventapp.dto.EventDto;
 import org.academiadecodigo.eventapp.model.Event;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EventToEventDto extends AbstractConverter<Event, EventDto> {
 
     @Override
