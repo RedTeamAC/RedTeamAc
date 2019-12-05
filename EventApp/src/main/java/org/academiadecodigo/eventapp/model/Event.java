@@ -1,11 +1,26 @@
 package org.academiadecodigo.eventapp.model;
 
+
+
+import javax.persistence.*;
+
+@Entity
+@Table( name = "event")
 public class Event extends AbstractEntity {
 
     private EventType type;
     private int minAttendance;
     private int maxAttendance;
     private int description;
+
+    @OneToMany(
+
+            cascade = {CascadeType.ALL},
+            orphanRemoval = false,
+            mappedBy = "event",
+            fetch = FetchType.EAGER
+
+    )
 
     public EventType getType() {
         return type;
@@ -22,6 +37,8 @@ public class Event extends AbstractEntity {
     public int getDescription() {
         return description;
     }
+
+
 
     public void setType(EventType type) {
         this.type = type;
