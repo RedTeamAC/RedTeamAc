@@ -9,16 +9,17 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-public abstract class GenerigJpaDao<T extends AbstractEntity> implements Dao<T> {
+public abstract class GenericJpaDao<T extends AbstractEntity> implements Dao<T> {
 
     protected Class<T> modelType;
 
     @PersistenceContext
     protected EntityManager em;
 
-    public GenerigJpaDao(Class<T> modelType) {
+    public GenericJpaDao(Class<T> modelType) {
         this.modelType = modelType;
     }
+
 
     public void setEm(EntityManager em) {
         this.em = em;

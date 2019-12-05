@@ -3,10 +3,12 @@ package org.academiadecodigo.eventapp.service;
 import org.academiadecodigo.eventapp.dao.EventDao;
 import org.academiadecodigo.eventapp.model.Event;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class EventServiceImpl implements EventService {
 
     private EventDao eventDao;
@@ -35,6 +37,6 @@ public class EventServiceImpl implements EventService {
     @Override
     @Transactional
     public void delete(Integer id) {
-        
+
     }
 }
