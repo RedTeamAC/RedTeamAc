@@ -1,4 +1,4 @@
-package service;
+package org.academiadecodigo.eventapp.service;
 
 public class RestController {
 

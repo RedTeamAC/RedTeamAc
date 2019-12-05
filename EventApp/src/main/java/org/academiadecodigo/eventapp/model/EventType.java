@@ -1,7 +1,6 @@
-package model;
+package org.academiadecodigo.eventapp.model;
 
 public enum EventType {
-
     MEAL,
     WORKSHOP,
     ADVENTURE,
