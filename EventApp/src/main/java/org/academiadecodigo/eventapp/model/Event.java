@@ -11,7 +11,7 @@ public class Event extends AbstractEntity {
     private EventType type;
     private int minAttendance;
     private int maxAttendance;
-    private int description;
+    private String description;
 
     @OneToMany(
 
@@ -34,7 +34,7 @@ public class Event extends AbstractEntity {
         return maxAttendance;
     }
 
-    public int getDescription() {
+    public String getDescription() {
         return description;
     }
 
@@ -52,7 +52,7 @@ public class Event extends AbstractEntity {
         this.maxAttendance = maxAttendance;
     }
 
-    public void setDescription(int description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }
