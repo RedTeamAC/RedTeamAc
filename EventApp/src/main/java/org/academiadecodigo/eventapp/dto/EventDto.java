@@ -1,6 +1,7 @@
 package org.academiadecodigo.eventapp.dto;
 
 import org.academiadecodigo.eventapp.model.EventType;
+import org.academiadecodigo.eventapp.model.LocationType;
 import org.academiadecodigo.eventapp.model.User;
 
 import javax.persistence.CascadeType;
@@ -19,7 +20,7 @@ public class EventDto {
     private String name;
 
     @NotNull
-    private String location;
+    private LocationType location;
 
     @NotNull
     @Pattern(regexp = "^\\+?[0-9]*$", message = "phone has invalid characters")
@@ -28,16 +29,10 @@ public class EventDto {
 
     private EventType type;
 
-    @NotNull
-    @NotBlank
     private Integer minAttendance;
 
-    @NotNull
-    @NotBlank
     private Integer maxAttendance;
 
-    @NotNull
-    @NotBlank
     private String description;
 
     public Integer getId() {
@@ -48,7 +43,7 @@ public class EventDto {
         return name;
     }
 
-    public String getLocation() {
+    public LocationType getLocation() {
         return location;
     }
 
@@ -80,7 +75,7 @@ public class EventDto {
         this.name = name;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(LocationType location) {
         this.location = location;
     }
 
