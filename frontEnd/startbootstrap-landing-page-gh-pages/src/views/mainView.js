@@ -1,5 +1,8 @@
 function start() {
-    $('#event').append('<div class="col-12 col-md-3 mx-auto"><button type="submit" class="btn btn-block btn-lg btn-primary">Register Event</button></div>');
+    $('#event').append('<button type="submit" class="btn btn-block btn-lg btn-primary sign-company">Register Company</button>');
+    $('#event').append('<button type="submit" class="btn btn-block btn-lg btn-primary sign-event">Register Event</button>');
+    $('.sign-event').on('click', () => {window.location.hash = 'newEvent'});
+    $('#event').append('<button type="submit" class="btn btn-block btn-lg btn-primary sign-user">Register User</button>');
 }
 
 function clear() {

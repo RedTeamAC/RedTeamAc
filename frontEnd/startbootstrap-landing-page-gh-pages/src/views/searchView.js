@@ -4,26 +4,23 @@ const image_map = {
     ADVENTURE: "img/nature.jpg",
     CONCERT: "img/concert.jpg",
     LADIES_NIGHT_OUT: "img/cocktail.jpg",
-    
-}
+};
 
-function renderEvent(event) {
-    let html = event.reduce((acc, detail) => {
-        acc += "<img class=\"event_img\" src=" + image_map[detail.image] + " />";
+function renderEvent(events) {
+    console.log(events);
+    
+    let html = events.reduce((acc, detail) => {
+        acc += '<div class="event">';
+        acc += "<img class=\"event_img\" src=" + image_map[detail.type] + " />";
         acc += `<div id=\"event_text\"><ul style=\"list-style-type:none;\"><li id=\"name_event\">${detail.name}</li>`;
         acc += `<li>${detail.location}</li>`;
         acc += `<li>${detail.description}</li>`;
+        acc += '<button type=\"button\" class=\"btn btn-info\">Buy ticket</button></div></ul></div>';
         return acc;
-    }, '<div class="event">');
-    html += '<button type=\"button\" class=\"btn btn-info\">Buy ticket</button>\"</div></ul></div>';
+    }, '');
+    //html += '<button type=\"button\" class=\"btn btn-info\">Buy ticket</button>\"</div></ul></div>';
 
     $('#event').append($(html));
-}
-
-function render(events) {
-    if (events) {
-        events.forEach(renderEvent(event));
-    }
 }
 
 function start() {
@@ -36,6 +33,6 @@ function clear() {
 
 export default {
     start,
-    render,
+    renderEvent,
     clear
 }
