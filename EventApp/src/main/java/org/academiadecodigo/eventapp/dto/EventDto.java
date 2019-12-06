@@ -6,17 +6,38 @@ import org.academiadecodigo.eventapp.model.User;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.*;
+
 import java.util.List;
 
 public class EventDto {
 
     private Integer id;
+    @NotNull(message = "first name is mandatory")
+    @NotBlank(message = "first name is mandatory")
+    @Size(min = 3, max = 64)
     private String name;
+
+    @NotNull
     private String location;
+
+    @NotNull
+    @Pattern(regexp = "^\\+?[0-9]*$", message = "phone has invalid characters")
+    @Size(min = 9, max = 16)
     private String contact;
+
     private EventType type;
+
+    @NotNull
+    @NotBlank
     private Integer minAttendance;
+
+    @NotNull
+    @NotBlank
     private Integer maxAttendance;
+
+    @NotNull
+    @NotBlank
     private String description;
 
     public Integer getId() {
@@ -82,7 +103,6 @@ public class EventDto {
     public void setDescription(String description) {
         this.description = description;
     }
-
 
 
     @Override

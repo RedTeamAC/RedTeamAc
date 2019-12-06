@@ -2,6 +2,7 @@ package org.academiadecodigo.eventapp.service;
 
 import org.academiadecodigo.eventapp.dao.EventDao;
 import org.academiadecodigo.eventapp.model.Event;
+import org.academiadecodigo.eventapp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,5 +39,13 @@ public class EventServiceImpl implements EventService {
     @Transactional
     public void delete(Integer id) {
 
+    }
+
+    @Transactional
+    public void test(User user, Integer id) {
+        Event event = eventDao.findById(id);
+        event.getUserList().add(user);
+
+        eventDao.saveOrUpdate(event);
     }
 }

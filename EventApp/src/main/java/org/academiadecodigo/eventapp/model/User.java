@@ -10,7 +10,10 @@ public class User extends AbstractEntity {
 
     private String email;
     private String password;
+
     @ManyToMany(
+            cascade = {CascadeType.MERGE, CascadeType.PERSIST},
+
             fetch = FetchType.EAGER
     )
     private List<Event> userEvents = new ArrayList<>();

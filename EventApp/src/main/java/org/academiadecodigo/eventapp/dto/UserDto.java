@@ -1,18 +1,26 @@
 package org.academiadecodigo.eventapp.dto;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
+
 
 public class UserDto {
 
     private Integer id;
 
-    @NotNull
+    @NotNull(message = "first name is mandatory")
+    @NotBlank(message = "first name is mandatory")
+    @Size(min = 3, max = 64)
     private String name;
+
     @NotNull
     private String location;
+
     @NotNull
+    @Pattern(regexp = "^\\+?[0-9]*$", message = "phone has invalid characters")
+    @Size(min = 9, max = 16)
     private String contact;
-    @NotNull
+
+    @Email
     private String email;
 
     public Integer getId() {
