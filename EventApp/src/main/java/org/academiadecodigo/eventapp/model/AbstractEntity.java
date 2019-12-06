@@ -13,7 +13,7 @@ public class AbstractEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String location;
+    private LocationType location;
     private String contact;
 
     @Version
@@ -45,7 +45,7 @@ public class AbstractEntity {
         return name;
     }
 
-    public String getLocation() {
+    public LocationType getLocation() {
         return location;
     }
 
@@ -61,7 +61,7 @@ public class AbstractEntity {
         this.name = name;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(LocationType location) {
         this.location = location;
     }
 

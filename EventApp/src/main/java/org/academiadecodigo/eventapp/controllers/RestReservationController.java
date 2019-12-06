@@ -63,8 +63,12 @@ public class RestReservationController {
             user = userService.save(userDtoToUserConverter.convert(userDto));
         }
 
+        user.getUserEvents().add(event);
         event.getUserList().add(user);
         eventService.save(event);
+        userService.save(user);
+
+        //eventService.test(user, id);
 
         return new ResponseEntity<>(HttpStatus.OK);
 

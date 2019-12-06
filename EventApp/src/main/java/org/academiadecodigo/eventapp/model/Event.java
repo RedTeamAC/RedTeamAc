@@ -15,10 +15,7 @@ public class Event extends AbstractEntity {
     private int maxAttendance;
     private String description;
 
-    @OneToMany(
-            cascade = {CascadeType.ALL},
-
-            orphanRemoval = false,
+    @ManyToMany(
 
             mappedBy = "userEvents",
 

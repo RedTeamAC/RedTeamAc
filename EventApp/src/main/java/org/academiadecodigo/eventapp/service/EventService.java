@@ -1,6 +1,7 @@
 package org.academiadecodigo.eventapp.service;
 
 import org.academiadecodigo.eventapp.model.Event;
+import org.academiadecodigo.eventapp.model.User;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface EventService {
     Event save(Event event);
 
     void delete(Integer id);
+
+    void test(User user, Integer id);
 }
