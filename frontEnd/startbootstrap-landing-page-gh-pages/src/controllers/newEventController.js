@@ -5,5 +5,6 @@ function start () {
 }
 
 export default {
-    start
+    start,
+    hash: 'newEvent'
 }
