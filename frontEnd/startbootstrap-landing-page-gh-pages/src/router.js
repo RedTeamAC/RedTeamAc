@@ -5,21 +5,16 @@ const defaultRoute = 'main';
 function start() {
     window.onhashchange = window.onhashchange || function () {
 
-        console.log('#1');
-        const controllerName = Object.keys(controllers).find(
-            key => `#${controllers[key].hash}` === window.location.hash
-        );
+        $('.search').on('click', () => {window.location.hash = 'search'});
 
-        console.log(controllers);
-        console.log(controllerName);
-        
+        const controllerName = Object.keys(controllers).find(
+            key => `#${controllers[key].hash}` === this.window.location.hash);
+
         if (!controllerName) {
             window.location.hash = defaultRoute;
-            console.log('#2');
             return;
         }
 
-        console.log('#3');
         controllers[controllerName].start();
     };
 
