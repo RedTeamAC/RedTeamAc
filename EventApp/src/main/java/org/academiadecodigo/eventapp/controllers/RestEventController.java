@@ -43,12 +43,11 @@ public class RestEventController {
     }
 
 
-    @RequestMapping(method = RequestMethod.POST , path = {"/", "", "add"})
-    public ResponseEntity<?> addEvent(@Valid @RequestBody EventDto eventDto, BindingResult bindingResult, UriComponentsBuilder uriComponentsBuilder){
+    @RequestMapping(method = RequestMethod.POST, path = {"/", "", "add"})
+    public ResponseEntity<?> addEvent(@Valid @RequestBody EventDto eventDto, BindingResult bindingResult, UriComponentsBuilder uriComponentsBuilder) {
 
 
-
-        if(bindingResult.hasErrors() || eventDto.getId()!= null){
+        if (bindingResult.hasErrors() || eventDto.getId() != null) {
 
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -58,8 +57,8 @@ public class RestEventController {
         return new ResponseEntity<>(eventToEventDtoConverter.convert(savedEvent), HttpStatus.CREATED);
     }
 
-    @RequestMapping(method = RequestMethod.GET , path = {"/{id}"})
-    public ResponseEntity<EventDto> getUser(@PathVariable Integer id){
+    @RequestMapping(method = RequestMethod.GET, path = {"/{id}"})
+    public ResponseEntity<EventDto> getUser(@PathVariable Integer id) {
 
         Event event = eventService.get(id);
 
@@ -72,13 +71,20 @@ public class RestEventController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = {"/", "", "list"})
-        public ResponseEntity<List<EventDto>> listEvents(){
+    public ResponseEntity<List<EventDto>> listEvents() {
 
-            return  new ResponseEntity<>(eventToEventDtoConverter.convert(eventService.findAll()), HttpStatus.OK);
-
-        }
-
+        return new ResponseEntity<>(eventToEventDtoConverter.convert(eventService.findAll()), HttpStatus.OK);
 
     }
+
+
+    @RequestMapping(method = RequestMethod.GET, path = {"/find/{location}"})
+    public ResponseEntity<List<EventDto>> getBylocation(@PathVariable String location) {
+
+        return new ResponseEntity<>(eventToEventDtoConverter.convert(eventService.findByLocation(location)), HttpStatus.OK);
+
+    }
+
+}
 
 

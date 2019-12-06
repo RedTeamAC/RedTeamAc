@@ -2,6 +2,7 @@ package org.academiadecodigo.eventapp.service;
 
 import org.academiadecodigo.eventapp.dao.EventDao;
 import org.academiadecodigo.eventapp.model.Event;
+import org.academiadecodigo.eventapp.model.LocationType;
 import org.academiadecodigo.eventapp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,5 +48,22 @@ public class EventServiceImpl implements EventService {
         event.getUserList().add(user);
 
         eventDao.saveOrUpdate(event);
+    }
+
+    @Override
+    public List<Event> findByLocation(String location) {
+        Integer helper = 0;
+        LocationType locations[] = LocationType.values();
+        for (int i = 0; i < locations.length ; i++) {
+
+            if (locations[i].getLocation().equalsIgnoreCase(location)){
+                System.out.println(location);
+                System.out.println(locations[i].getLocation());
+                helper = i;
+            }
+
+        }
+
+        return eventDao.findByLocation(helper);
     }
 }
