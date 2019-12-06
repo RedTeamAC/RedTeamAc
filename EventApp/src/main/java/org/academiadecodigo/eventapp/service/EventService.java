@@ -16,4 +16,7 @@ public interface EventService {
     void delete(Integer id);
 
     void test(User user, Integer id);
+
+    List<Event> findByLocation(String location);
+
 }
